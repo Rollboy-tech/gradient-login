@@ -1,0 +1,192 @@
+/* =====================================================
+   GRADIENT LOGIN FORM - STYLES
+   ===================================================== */
+
+/* Reset default styles for all elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set body and html to full viewport height with dark background */
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+/* =====================================================
+   BACKGROUND ANIMATION - CIRCLES
+   ===================================================== */
+
+/* Main container - holds all elements */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Container for animated background circles */
+.circles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Base styles for each animated circle blob */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  filter: blur(50px);
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+/* Individual circle definitions with unique colors, sizes, positions, and animation delays */
+.c1 { width: 25rem; height: 25rem; background: #00ffff; top: 20%; left: 10%; animation-delay: 0s; }      /* Cyan */
+.c2 { width: 30rem; height: 30rem; background: #ff00ff; top: 40%; left: 80%; animation-delay: 5s; }      /* Magenta */
+.c3 { width: 22rem; height: 22rem; background: #00ff88; top: 60%; left: 50%; animation-delay: 10s; }     /* Green */
+.c4 { width: 28rem; height: 28rem; background: #ff8800; top: 80%; left: 10%; animation-delay: 15s; }     /* Orange */
+.c5 { width: 20rem; height: 20rem; background: #ff0066; top: 100%; left: 80%; animation-delay: 20s; }    /* Pink */
+
+/* Animation: Smooth floating movement and scaling of circles */
+@keyframes float {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(100px, -80px) scale(1.5); }
+  50%  { transform: translate(-100px, 80px) scale(3); }
+  75%  { transform: translate(-100px, 100px) scale(1.5); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* =====================================================
+   GLASSMORPHISM LOGIN FORM
+   ===================================================== */
+
+/* Main glassmorphism container with blur effect */
+.glass {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 400px);
+  padding: 2rem;
+  border-radius: 20px;
+  z-index: 2;
+
+  /* Glassmorphism effect: semi-transparent with backdrop blur */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+
+  text-align: center;
+  color: #e6eef8;
+}
+
+/* Heading styling inside the glass container */
+.glass h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Paragraph text inside the glass container */
+.glass p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+/* Button styling - transparent with hover effect */
+.glass button {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+/* Button hover state - increased opacity and upward movement */
+.glass button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   INPUT FIELDS AND LABELS
+   ===================================================== */
+
+/* Base styles for all input fields */
+input {
+  width: 100%;
+  font-size: 16px;
+  margin: 5px;
+  padding: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #e6eef8;
+  outline: none;
+  color: #e6eef8;
+  font-weight: 500;
+}
+
+/* Container for each input field and its label */
+.input-group {
+  transition: 1.5s ease-in-out;
+  width: 80%;
+  position: relative;
+  margin: 15px;
+}
+
+/* Label styling - floats above input on focus */
+label {
+  position: absolute;
+  left: 6px;
+  font-weight: bold;
+  top: 10px;
+  font-size: 16px;
+  z-index: 1;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+/* Label color when input is invalid */
+.inv-label {
+  color: rgb(253, 85, 85);
+}
+
+/* Input border color when invalid */
+.inv-input {
+  border-bottom: 2px solid rgb(253, 85, 85);
+  color: rgb(253, 85, 85);
+}
+
+/* Label animation: moves up when input has value or is focused */
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  top: -10px;
+}
+
+/* Placeholder styling - hidden by default */
+input::placeholder {
+  color: transparent;
+  transition: 0.3s;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+/* Show placeholder on focus or when input has value */
+input:focus::placeholder,
+input:not(:placeholder-shown)::placeholder {
+  color: #e6eef8;
+}
